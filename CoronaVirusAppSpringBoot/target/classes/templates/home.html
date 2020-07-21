@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Corona App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--Adding link to bootstrap styling sheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Container class contains all the page and beautifies the look -->
+<div class="container">
+
+    <h1>Corona Virus tracker app</h1>
+    <p>This application shows the daily reported cases of Covid-19 across the globe</p>
+
+    <!-- Displays the main headings   -->
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+        <p class="lead">Total cases reported today</p>
+        <hr class="my-4">
+    </div>
+
+    <!-- Displaying CSV in tabular format -->
+    <table class="table">
+        <tr>
+            <th>State</th>
+            <th>Country</th>
+            <th>Total cases reported</th>
+        </tr>
+    <!--   Displaying the attributes that were passed by home controller     -->
+        <tr th:each="locationStat : ${locationStatistics}">
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.totalCases}">0</td>
+        </tr>
+    </table>
+</div>>
+
+</body>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue fixed-bottom">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright: Abdul Mannan
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+</html>
